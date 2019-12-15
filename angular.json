@@ -42,6 +42,123 @@
           }
         }
       }
+    },
+    "ngx-pick-datetime-example": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/ngx-pick-datetime-example",
+      "sourceRoot": "projects/ngx-pick-datetime-example/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ngx-pick-datetime-example",
+            "index": "projects/ngx-pick-datetime-example/src/index.html",
+            "main": "projects/ngx-pick-datetime-example/src/main.ts",
+            "polyfills": "projects/ngx-pick-datetime-example/src/polyfills.ts",
+            "tsConfig": "projects/ngx-pick-datetime-example/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/ngx-pick-datetime-example/src/favicon.ico",
+              "projects/ngx-pick-datetime-example/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-pick-datetime-example/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ngx-pick-datetime-example/src/environments/environment.ts",
+                  "with": "projects/ngx-pick-datetime-example/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ngx-pick-datetime-example:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ngx-pick-datetime-example:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ngx-pick-datetime-example:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-pick-datetime-example/src/test.ts",
+            "polyfills": "projects/ngx-pick-datetime-example/src/polyfills.ts",
+            "tsConfig": "projects/ngx-pick-datetime-example/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-pick-datetime-example/karma.conf.js",
+            "assets": [
+              "projects/ngx-pick-datetime-example/src/favicon.ico",
+              "projects/ngx-pick-datetime-example/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-pick-datetime-example/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-pick-datetime-example/tsconfig.app.json",
+              "projects/ngx-pick-datetime-example/tsconfig.spec.json",
+              "projects/ngx-pick-datetime-example/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/ngx-pick-datetime-example/e2e/protractor.conf.js",
+            "devServerTarget": "ngx-pick-datetime-example:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ngx-pick-datetime-example:serve:production"
+            }
+          }
+        }
+      }
     }},
   "cli": {
     "analytics": "2a4db70e-555b-48b6-ac83-9141435a63c3"
